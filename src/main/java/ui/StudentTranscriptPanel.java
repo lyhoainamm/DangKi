@@ -6,6 +6,7 @@ import service.GradeService;
 import service.RegistrationService;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import javax.swing.table.AbstractTableModel;
 import java.awt.*;
 import java.util.ArrayList;
@@ -21,18 +22,28 @@ public class StudentTranscriptPanel extends JPanel {
 
     public StudentTranscriptPanel(User user){
         this.user = user;
-        setLayout(new BorderLayout(6,6));
+        setLayout(new BorderLayout());
+        setBorder(new EmptyBorder(12,12,12,12));
 
-        JPanel top = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        top.add(new JLabel("Học kỳ:")); top.add(cbTerm);
-        JButton btn = new JButton("Làm mới");
-        btn.addActionListener(e -> reload());
-        top.add(btn);
-        add(top, BorderLayout.NORTH);
-
+        add(buildTop(), BorderLayout.NORTH);
         add(new JScrollPane(tbl), BorderLayout.CENTER);
 
         reload();
+    }
+
+    private JComponent buildTop(){
+        JPanel top = new JPanel(new BorderLayout());
+        JLabel title = new JLabel("Bảng điểm");
+        title.setFont(title.getFont().deriveFont(Font.BOLD, 16f));
+        JPanel right = new JPanel(new FlowLayout(FlowLayout.RIGHT,8,0));
+        right.add(new JLabel("Học kỳ:"));
+        right.add(cbTerm);
+        JButton btn = new JButton("Làm mới");
+        btn.addActionListener(e -> reload());
+        right.add(btn);
+        top.add(title, BorderLayout.WEST);
+        top.add(right, BorderLayout.EAST);
+        return top;
     }
 
     private void reload(){
