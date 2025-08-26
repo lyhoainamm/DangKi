@@ -20,8 +20,6 @@ public class LecturerGradePanel extends JPanel {
 
     public LecturerGradePanel(){
         setLayout(new BorderLayout(6,6));
-
-<<<<<<< HEAD
         JPanel form = new JPanel(new GridBagLayout());
         form.setBorder(BorderFactory.createTitledBorder("Nhập điểm"));
         GridBagConstraints gbc = new GridBagConstraints();
@@ -52,14 +50,6 @@ public class LecturerGradePanel extends JPanel {
         form.add(new JLabel("Trọng số:"), gbc);
         gbc.gridx = 1;
         form.add(spWeight, gbc);
-=======
-        JPanel top = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        top.add(new JLabel("Lớp:")); top.add(cbSection);
-        top.add(new JLabel("SV:")); top.add(cbStudent);
-        top.add(new JLabel("Thành phần:")); top.add(cbComp);
-        top.add(new JLabel("Điểm:")); top.add(spScore);
-        top.add(new JLabel("Trọng số:")); top.add(spWeight);
->>>>>>> origin/main
 
         JButton btn = new JButton("Ghi điểm");
         btn.addActionListener(e -> {
