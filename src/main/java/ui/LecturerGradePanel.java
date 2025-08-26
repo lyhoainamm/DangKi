@@ -19,12 +19,16 @@ public class LecturerGradePanel extends JPanel {
     private final JSpinner spWeight = new JSpinner(new SpinnerNumberModel(0.5, 0.0, 1.0, 0.1));
 
     public LecturerGradePanel(){
+
         setLayout(new BorderLayout(10,10));
 
         JLabel title = new JLabel("Nhập điểm sinh viên");
         title.setFont(title.getFont().deriveFont(Font.BOLD, 16f));
         title.setHorizontalAlignment(SwingConstants.CENTER);
         add(title, BorderLayout.NORTH);
+
+
+        setLayout(new BorderLayout(6,6));
 
         JPanel form = new JPanel(new GridBagLayout());
         form.setBorder(BorderFactory.createCompoundBorder(
