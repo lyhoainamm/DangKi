@@ -19,11 +19,17 @@ public class LecturerGradePanel extends JPanel {
     private final JSpinner spWeight = new JSpinner(new SpinnerNumberModel(0.5, 0.0, 1.0, 0.1));
 
     public LecturerGradePanel(){
-        setLayout(new BorderLayout(6,6));
+        setLayout(new BorderLayout(10,10));
 
-<<<<<<< HEAD
+        JLabel title = new JLabel("Nhập điểm sinh viên");
+        title.setFont(title.getFont().deriveFont(Font.BOLD, 16f));
+        title.setHorizontalAlignment(SwingConstants.CENTER);
+        add(title, BorderLayout.NORTH);
+
         JPanel form = new JPanel(new GridBagLayout());
-        form.setBorder(BorderFactory.createTitledBorder("Nhập điểm"));
+        form.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createTitledBorder("Thông tin"),
+                BorderFactory.createEmptyBorder(8,8,8,8)));
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(4,4,4,4);
         gbc.anchor = GridBagConstraints.WEST;
@@ -52,14 +58,6 @@ public class LecturerGradePanel extends JPanel {
         form.add(new JLabel("Trọng số:"), gbc);
         gbc.gridx = 1;
         form.add(spWeight, gbc);
-=======
-        JPanel top = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        top.add(new JLabel("Lớp:")); top.add(cbSection);
-        top.add(new JLabel("SV:")); top.add(cbStudent);
-        top.add(new JLabel("Thành phần:")); top.add(cbComp);
-        top.add(new JLabel("Điểm:")); top.add(spScore);
-        top.add(new JLabel("Trọng số:")); top.add(spWeight);
->>>>>>> origin/main
 
         JButton btn = new JButton("Ghi điểm");
         btn.addActionListener(e -> {
@@ -75,11 +73,11 @@ public class LecturerGradePanel extends JPanel {
             JOptionPane.showMessageDialog(this, "Đã ghi điểm.");
         });
 
-        gbc.gridx = 0; gbc.gridy = 5; gbc.gridwidth = 2;
-        gbc.anchor = GridBagConstraints.CENTER;
-        form.add(btn, gbc);
+        add(form, BorderLayout.CENTER);
 
-        add(form, BorderLayout.NORTH);
+        JPanel actions = new JPanel();
+        actions.add(btn);
+        add(actions, BorderLayout.SOUTH);
 
         // Nạp danh sách section demo (theo 2025A)
         for (var s : reg.listSectionsByTerm("2025A")) cbSection.addItem(s.getId());

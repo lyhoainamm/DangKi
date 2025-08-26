@@ -45,6 +45,7 @@ public class PortalFrame extends JFrame {
         content.add(buildDashboard(), "HOME");
         content.add(new RegisterPortalPanel(user), "REGISTER");
         content.add(new TimetablePanel(user), "TIMETABLE");
+        content.add(new StudentTranscriptPanel(user), "GRADES");
         center.add(content, BorderLayout.CENTER);
 
         root.add(center, BorderLayout.CENTER);
@@ -68,6 +69,7 @@ public class PortalFrame extends JFrame {
         side.add(menu("Trang chủ", UIManager.getIcon("FileView.homeIcon"), e -> showHome()));
         side.add(menu("Đăng ký học", UIManager.getIcon("OptionPane.questionIcon"), e -> openRegister()));
         side.add(menu("Thời khóa biểu", UIManager.getIcon("OptionPane.warningIcon"), e -> openTimetable()));
+        side.add(menu("Tra cứu điểm", UIManager.getIcon("OptionPane.informationIcon"), e -> openGrades()));
 
         side.add(Box.createVerticalGlue());
 
@@ -117,10 +119,11 @@ public class PortalFrame extends JFrame {
         wrap.setBackground(PAGE_BG);
         wrap.setBorder(new EmptyBorder(16, 16, 16, 16));
 
-        JPanel cards = new JPanel(new GridLayout(1, 3, 16, 16));
+        JPanel cards = new JPanel(new GridLayout(1, 4, 16, 16));
         cards.setOpaque(false);
         cards.add(card("Đăng ký học", UIManager.getIcon("OptionPane.questionIcon"), this::openRegister));
         cards.add(card("Thời khóa biểu", UIManager.getIcon("OptionPane.warningIcon"), this::openTimetable));
+        cards.add(card("Tra cứu điểm", UIManager.getIcon("OptionPane.informationIcon"), this::openGrades));
         cards.add(card("Tin tức", UIManager.getIcon("OptionPane.informationIcon"), this::showHome));
         wrap.add(cards, BorderLayout.NORTH);
 
@@ -175,6 +178,9 @@ public class PortalFrame extends JFrame {
     }
     private void openTimetable(){
         contentCards.show(content, "TIMETABLE");
+    }
+    private void openGrades(){
+        contentCards.show(content, "GRADES");
     }
     private void showHome(){
         contentCards.show(content, "HOME");
